@@ -3,10 +3,19 @@ function showAlert() {
     document.getElementById("overlay").style.display = "block";
 }
 
+const bellSound = new Audio('https://audio-previews.elements.envatousercontent.com/files/500162791/preview.mp3?response-content-disposition=attachment%3B+filename%3D%22R6ZASPC-bell-rapid-bell-dings.mp3%22');
+
+function playBellSound() {
+    bellSound.play();
+}
+
 function acceptAction() {
-    window.open(rxData.value)
-    document.getElementById("alertBox").style.display = "none";
-    document.getElementById("overlay").style.display = "none";
+    playBellSound();
+    setTimeout(() => {
+        window.open(rxData.value);
+        document.getElementById("alertBox").style.display = "none";
+        document.getElementById("overlay").style.display = "none";
+    }, 500); // increased timeout to allow bell sound to play
 }
 
 function rejectAction() {
@@ -65,8 +74,6 @@ function onSend() {
     }
 
     statusText.textContent = "Sending...";
-
-
 
     // generate audio waveform
     var waveform = ggwave.encode(instance, txData.value, ggwave.ProtocolId.GGWAVE_PROTOCOL_ULTRASOUND_NORMAL, 10)
@@ -129,12 +136,8 @@ async function startListening() {
             const res = ggwave.decode(instance, convertTypedArray(samples, Int8Array));
             if (res && res.length > 0) {
                 const decoded = new TextDecoder("utf-8").decode(res);
-                if (isValidURL(decoded)) {
-                    rxData.value = decoded;
-                    showAlert();
-                } else {
-                    console.log(decoded + " is invalid");
-                }
+                rxData.value = decoded;
+                showAlert();
             }
         };
 
