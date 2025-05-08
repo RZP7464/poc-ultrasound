@@ -69,7 +69,7 @@ function onSend() {
 
 
     // generate audio waveform
-    var waveform = ggwave.encode(instance, txData.value, ggwave.ProtocolId.GGWAVE_PROTOCOL_AUDIBLE_NORMAL, 10)
+    var waveform = ggwave.encode(instance, txData.value, ggwave.ProtocolId.GGWAVE_PROTOCOL_ULTRASOUND_NORMAL, 10)
 
     // play audio
     var buf = convertTypedArray(waveform, Float32Array);
