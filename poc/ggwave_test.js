@@ -1,19 +1,8 @@
-function showAlert() {
+function showAlert(amount) {
     document.getElementById("alertBox").style.display = "block";
     document.getElementById("overlay").style.display = "block";
-    
-    // Generate random payment amount for demo
-    const amount = (Math.random() * 3000 + 499).toFixed(2);
-    document.querySelector('#payment-amount span:last-child').textContent = '₹ ' + Number(amount).toLocaleString('en-IN');
-    
-    // Play notification sound
-    playBellSound();
-}
-
-const bellSound = new Audio('https://dl.prokerala.com/downloads/ringtones/files/mp3/ayogi-309.mp3');
-
-function playBellSound() {
-    bellSound.play();
+    // Also update the POS display amount
+    document.querySelector('#amount').textContent = '₹ ' + amount[1] + '.00';
 }
 
 function acceptAction() {
@@ -41,6 +30,7 @@ function acceptAction() {
         setTimeout(() => {
             statusText.textContent = "Ready to receive";
             statusIndicator.classList.remove("active");
+            document.querySelector('.pos-display .amount').textContent = '₹ ---.--';
         }, 3000);
     }, 1000);
 }
@@ -59,6 +49,7 @@ function rejectAction() {
     // Reset after 2 seconds
     setTimeout(() => {
         statusText.textContent = "Ready to receive";
+        document.querySelector('.pos-display .amount').textContent = '₹ ---.--';
     }, 2000);
 }
 
@@ -155,24 +146,101 @@ function isValidURL(str) {
     }
 }
 
-// Toggle receive function
-captureToggle.addEventListener("click", function() {
-    if (isReceiving) {
-        stopReceive();
-    } else {
-        startListening();
+// Ensure all DOM elements are loaded before attaching event listeners
+document.addEventListener('DOMContentLoaded', function() {
+    // Capture toggle button
+    if (captureToggle) {
+        captureToggle.addEventListener("click", function() {
+            if (isReceiving) {
+                stopReceive();
+            } else {
+                startListening();
+            }
+        });
     }
+
+    // Generate payment button
+    const generatePaymentBtn = document.getElementById('generatePayment');
+    if (generatePaymentBtn) {
+        generatePaymentBtn.addEventListener('click', function() {
+            // Generate and display the payment URL
+            const paymentUrl = generatePaymentURL();
+            
+            // Animate button press
+            this.style.transform = 'translateY(4px)';
+            this.style.boxShadow = '0 0 0 rgba(0, 0, 0, 0.2)';
+            
+            setTimeout(() => {
+                this.style.transform = '';
+                this.style.boxShadow = '';
+            }, 100);
+        });
+    }
+
+    // Keypad buttons
+    document.querySelectorAll('.pos-key').forEach(key => {
+        key.addEventListener('click', function() {
+            // Animate the button press
+            this.style.transform = 'translateY(4px)';
+            this.style.boxShadow = '0 0 0 #2d3748';
+            
+            setTimeout(() => {
+                this.style.transform = '';
+                this.style.boxShadow = '';
+            }, 100);
+        });
+    });
 });
+
+// Add function to generate payment URL
+function generatePaymentURL() {
+    // Generate random amount between 10 and 1000
+    const amount = Math.floor(Math.random() * 990 + 10);
+    
+    // Use a fixed ID for demonstration purposes
+    const paymentId = "pl_QSiWE4HOKMKQHh";
+    
+    // Create the payment URL
+    const url = `https://pages.razorpay.com/${paymentId}/view?amount=${amount}`;
+    
+    // Update the URL display
+    const paymentUrlDisplay = document.getElementById("payment-url");
+    paymentUrlDisplay.textContent = url;
+    
+    // Update the amount display
+    document.querySelector('.pos-display .amount').textContent = `₹ ${amount}.00`;
+    
+    // Initialize audio context if needed
+    init();
+    
+    // generate audio waveform
+    var waveform = ggwave.encode(instance, url, ggwave.ProtocolId.GGWAVE_PROTOCOL_ULTRASOUND_FASTEST, 10)
+
+    // play audio
+    var buf = convertTypedArray(waveform, Float32Array);
+    var buffer = context.createBuffer(1, buf.length, context.sampleRate);
+    buffer.getChannelData(0).set(buf);
+    var source = context.createBufferSource();
+    source.buffer = buffer;
+    source.connect(context.destination);
+    source.start(0);
+
+    setTimeout(() => {
+        statusText.textContent = "Message sent!";
+    }, 1000);
+    
+    return url;
+}
 
 async function startListening() {
     init();
     isReceiving = true;
-    captureToggle.textContent = "STOP LISTENING";
+    captureToggle.textContent = "STOP";
     captureToggle.innerHTML = `
         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
             <rect x="6" y="6" width="12" height="12"></rect>
         </svg>
-        STOP LISTENING
+        STOP
     `;
     statusText.textContent = "Listening for payments...";
     statusIndicator.classList.add("active");
@@ -197,7 +265,9 @@ async function startListening() {
             if (res && res.length > 0) {
                 const decoded = new TextDecoder("utf-8").decode(res);
                 rxData.value = decoded;
-                showAlert();
+                // https://pages.razorpay.com/pl_QSiWE4HOKMKQHh/view?amount=13
+                const amount = decoded.match(/amount=(\d+)/);
+                showAlert(amount);
             }
         };
 
@@ -231,9 +301,7 @@ function resetCaptureButton() {
         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
             <path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"></path>
             <path d="M19 10v2a7 7 0 0 1-14 0v-2"></path>
-            <line x1="12" y1="19" x2="12" y2="23"></line>
-            <line x1="8" y1="23" x2="16" y2="23"></line>
         </svg>
-        START LISTENING
+        LISTEN
     `;
 }

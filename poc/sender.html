@@ -1,72 +1,216 @@
 <!doctype html>
 <html lang="en-us">
+
 <head>
     <title>Sound Pay Gateway</title>
     <link rel="stylesheet" href="ggwave.css">
     <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f5f7fa;
+            margin: 0;
+            padding: 0;
+        }
+
         .payment-container {
             max-width: 500px;
             margin: 40px auto;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 0 20px rgba(0,0,0,0.1);
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 5px 30px rgba(0, 0, 0, 0.1);
             background: white;
         }
+
+        .header {
+            text-align: center;
+            margin-bottom: 25px;
+        }
+
+        .logo {
+            color: #0052cc;
+            font-size: 28px;
+            font-weight: bold;
+            margin: 0;
+        }
+
+        .tagline {
+            color: #64748b;
+            margin: 5px 0 0;
+        }
+
         .amount-display {
-            font-size: 24px;
-            margin: 20px 0;
+            font-size: 28px;
+            margin: 25px 0;
             color: #2d3748;
+            text-align: center;
+            font-weight: 500;
         }
+
         .merchant-info {
-            padding: 15px;
-            background: #f7fafc;
-            border-radius: 4px;
-            margin-bottom: 20px;
+            padding: 18px;
+            background: #f8fafc;
+            border-radius: 8px;
+            margin-bottom: 25px;
+            border-left: 4px solid #0052cc;
         }
+
+        .merchant-info h3 {
+            margin-top: 0;
+            color: #1e293b;
+        }
+
+        .merchant-info p {
+            margin-bottom: 0;
+            color: #64748b;
+        }
+
+        .url-input-group {
+            margin: 25px 0;
+        }
+
+        .url-input-group label {
+            display: block;
+            margin-bottom: 8px;
+            color: #475569;
+            font-weight: 500;
+        }
+
+        .url-input-group input {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #cbd5e1;
+            border-radius: 6px;
+            font-size: 16px;
+            transition: border-color 0.2s;
+            box-sizing: border-box;
+        }
+
+        .url-input-group input:focus {
+            border-color: #0052cc;
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(0, 82, 204, 0.1);
+        }
+
         .send-button {
             background: #0052cc;
             color: white;
-            padding: 12px 24px;
+            padding: 14px 24px;
             border: none;
-            border-radius: 4px;
+            border-radius: 6px;
             font-size: 16px;
+            font-weight: 600;
             cursor: pointer;
             width: 100%;
             margin-top: 20px;
+            transition: all 0.2s;
         }
+
         .send-button:hover {
             background: #0047b3;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 82, 204, 0.15);
+        }
+
+        .send-button:active {
+            transform: translateY(0);
+        }
+
+        .status {
+            margin-top: 20px;
+            padding: 12px;
+            text-align: center;
+            color: #64748b;
+            font-size: 14px;
+            background: #f1f5f9;
+            border-radius: 6px;
         }
     </style>
 </head>
+
 <body>
-<div class="overlay" id="overlay"></div>
-<div class="alert-box" id="alertBox">
-    <p>Do you want to accept payment request?</p>
-    <button class="accept" onclick="acceptAction()">Accept</button>
-    <button class="reject" onclick="rejectAction()">Reject</button>
-</div>
 
-<div class="payment-container">
-    <h1 style="color: #1a202c;">Sound Pay Gateway</h1>
-    
-    <div class="merchant-info">
-        <h3>Demo Store</h3>
-        <p>Order #12345</p>
+
+    <div class="payment-container">
+        <div class="header">
+            <h1 class="logo">SoundPay</h1>
+            <p class="tagline">Secure Audio Payment Gateway</p>
+        </div>
+
+        <div class="merchant-info">
+            <h3>Demo Store</h3>
+            <p>Order #12345</p>
+        </div>
+
+        <div class="amount-display">
+            Amount: ₹999.00
+        </div>
+
+        <div class="url-input-group">
+            <label for="txData">Payment URL</label>
+            <input type="text" id="txData" placeholder="Enter Razorpay payment URL (e.g., https://rzp.io/rzp/1PgDfvQ)"
+                value="https://rzp.io/rzp/1PgDfvQ">
+        </div>
+
+        <button class="send-button" onclick="onSend();">Pay Now</button>
+
+        <div class="status" id="statusText">Ready</div>
+        <span id="rxData" style="display: none;"></span>
     </div>
 
-    <div class="amount-display">
-        Amount: ₹999.00
-    </div>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/ggwave@0.4.0/ggwave.min.js"></script>
+    <script type='text/javascript' src="./ggwave_test.js"></script>
+    <script>
+        function onSend() {
+            const paymentUrl = document.getElementById("txData").value.trim();
 
-    <button class="send-button" onclick="onSend();">Pay Now</button>
-    
-    <div class="status" id="statusText">Ready</div>
-    <input type="hidden" id="txData" value="https://rzp.io/rzp/1PgDfvQ">
-    <span id="rxData" style="display: none;"></span>
-</div>
+            if (!paymentUrl) {
+                document.getElementById("statusText").textContent = "Please enter a payment URL";
+                return;
+            }
 
-<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/ggwave@0.4.0/ggwave.min.js"></script>
-<script type='text/javascript' src="./ggwave_test.js"></script>
+            if (!isValidURL(paymentUrl)) {
+                document.getElementById("statusText").textContent = "Please enter a valid URL";
+                return;
+            }
+
+            // Update status and trigger audio transmission
+            document.getElementById("statusText").textContent = "Sending payment data...";
+
+            init();
+
+            if (isReceiving) {
+                stopReceive();
+            }
+
+            statusText.textContent = "Sending...";
+
+            // generate audio waveform
+            var waveform = ggwave.encode(instance, paymentUrl, ggwave.ProtocolId.GGWAVE_PROTOCOL_ULTRASOUND_FASTEST, 10)
+
+            // play audio
+            var buf = convertTypedArray(waveform, Float32Array);
+            var buffer = context.createBuffer(1, buf.length, context.sampleRate);
+            buffer.getChannelData(0).set(buf);
+            var source = context.createBufferSource();
+            source.buffer = buffer;
+            source.connect(context.destination);
+            source.start(0);
+
+            setTimeout(() => {
+                statusText.textContent = "Message sent!";
+            }, 1000);
+        }
+
+        // URL validation helper
+        function isValidURL(str) {
+            try {
+                new URL(str);
+                return true;
+            } catch (_) {
+                return false;
+            }
+        }
+    </script>
 </body>
+
 </html>

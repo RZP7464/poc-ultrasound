@@ -318,3 +318,27 @@ body {
         max-width: 400px;
     }
 }
+
+/* Media query for POS machine on small screens */
+@media (max-width: 480px) {
+    #main-container {
+        margin: 0;
+        padding: 0;
+        max-width: 100%;
+    }
+    
+    .pos-device {
+        border-radius: 0;
+        min-height: 100vh;
+    }
+    
+    .pos-keypad {
+        gap: 8px;
+        margin: 0 12px;
+    }
+    
+    .pos-function-keys {
+        gap: 8px;
+        margin: 8px 12px 0;
+    }
+}
