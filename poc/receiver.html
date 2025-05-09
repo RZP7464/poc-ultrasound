@@ -1,27 +1,101 @@
 <!doctype html>
 <html lang="en-us">
 <head>
-    <title>GG wave demo</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Razorpay Sound Payments - Receiver</title>
     <link rel="stylesheet" href="ggwave.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
 <div class="overlay" id="overlay"></div>
-<div class="alert-box" id="alertBox">
-    <p>Payment received via Sound. Do you want to accept payment request?</p>
-    <button class="accept" onclick="acceptAction()">Accept</button>
-    <button class="reject" onclick="rejectAction()">Reject</button>
+<div class="payment-modal" id="alertBox">
+    <div class="modal-logo">
+        <img src="https://razorpay.com/build/browser/static/razorpay-logo.84fa1f8d.svg" alt="Razorpay" height="30">
+    </div>
+    <div class="modal-content">
+        <div class="payment-icon">
+            <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="24" cy="24" r="24" fill="#E3F2FD"/>
+                <path d="M34 17L20 31L14 25" stroke="#2196F3" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+        </div>
+        <h2>Payment Detected</h2>
+        <p>You've received a payment request via Sound. Would you like to proceed?</p>
+        <div class="payment-details">
+            <div class="detail-row">
+                <span>Transaction ID:</span>
+                <span>RZP123456789</span>
+            </div>
+            <div id="payment-amount" class="detail-row amount">
+                <span>Amount:</span>
+                <span>₹ 1,499.00</span>
+            </div>
+        </div>
+        <div class="button-group">
+            <button class="btn reject" onclick="rejectAction()">Reject</button>
+            <button class="btn accept" onclick="acceptAction()">Accept Payment</button>
+        </div>
+    </div>
 </div>
 
-<div id="main-container" style="text-align: center;">
-    <h1>GGwave Demo</h1>
-
-    <div class="button-container">
-        <button class="big-button receive-button" id="captureToggle">RECEIVE</button>
+<div id="main-container">
+    <div class="header">
+        <h1>Sound Payments</h1>
     </div>
 
-    <div class="status" id="statusText">Ready</div>
+    <div class="receiver-container">
+        <div class="card">
+            <h2>Receive Payment</h2>
+            <p>Click the button below to start listening for payment signals</p>
+            
+            <div class="status-container">
+                <div class="status-indicator" id="statusIndicator"></div>
+                <div class="status-text" id="statusText">Ready to receive</div>
+            </div>
+            
+            <div class="button-container">
+                <button class="big-button receive-button" id="captureToggle">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"></path>
+                        <path d="M19 10v2a7 7 0 0 1-14 0v-2"></path>
+                        <line x1="12" y1="19" x2="12" y2="23"></line>
+                        <line x1="8" y1="23" x2="16" y2="23"></line>
+                    </svg>
+                    START LISTENING
+                </button>
+            </div>
+        </div>
+        
+        <div class="transaction-history">
+            <h3>Recent Transactions</h3>
+            <div class="transaction-list">
+                <div class="transaction-item">
+                    <div class="transaction-info">
+                        <div class="transaction-name">Order #12345</div>
+                        <div class="transaction-date">Today, 3:45 PM</div>
+                    </div>
+                    <div class="transaction-amount success">₹ 1,499.00</div>
+                </div>
+                <div class="transaction-item">
+                    <div class="transaction-info">
+                        <div class="transaction-name">Order #12344</div>
+                        <div class="transaction-date">Today, 2:30 PM</div>
+                    </div>
+                    <div class="transaction-amount success">₹ 499.00</div>
+                </div>
+                <div class="transaction-item">
+                    <div class="transaction-info">
+                        <div class="transaction-name">Order #12343</div>
+                        <div class="transaction-date">Yesterday</div>
+                    </div>
+                    <div class="transaction-amount failed">₹ 2,999.00</div>
+                </div>
+            </div>
+        </div>
+    </div>
 
-    <span id="rxData" style="display: none;" ></textarea>
+    <span id="rxData" style="display: none;"></span>
 </div>
 <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/ggwave@0.4.0/ggwave.min.js"></script>
 <script type='text/javascript' src = "./ggwave_test.js"></script>
