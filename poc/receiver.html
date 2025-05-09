@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="en-us">
+<head>
+    <title>GG wave demo</title>
+    <link rel="stylesheet" href="ggwave.css">
+</head>
+<body>
+<div class="overlay" id="overlay"></div>
+<div class="alert-box" id="alertBox">
+    <p>Payment received via Sound. Do you want to accept payment request?</p>
+    <button class="accept" onclick="acceptAction()">Accept</button>
+    <button class="reject" onclick="rejectAction()">Reject</button>
+</div>
+
+<div id="main-container" style="text-align: center;">
+    <h1>GGwave Demo</h1>
+
+    <div class="button-container">
+        <button class="big-button receive-button" id="captureToggle">RECEIVE</button>
+    </div>
+
+    <div class="status" id="statusText">Ready</div>
+
+    <span id="rxData" style="display: none;" ></textarea>
+</div>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/ggwave@0.4.0/ggwave.min.js"></script>
+<script type='text/javascript' src = "./ggwave_test.js"></script>
+</body>
+</html>

@@ -1,0 +1,223 @@
+Software Engineering Manager
+Bangalore
+For a Manager - Professional Services, we are looking at: 
+
+Roles and Responsibilties :
+
+8 - 12 Years of Experience in Design and development of web-based applications & microservices architecture
+Minimum of 3 years managing/leading a team of developers
+Experience in building & scaling high availability systems
+Proficient in reviewing code & technical specification documents
+Ability to understand the product requirements & estimate the effort involved
+Must be an Agile practioner. Conduct Scrums, sprint planning, Sprint retrospective ceremonies
+Ability to manage internal & external stakeholders & unblock the team wherever required
+Inbibe good coding practices within the team, encourage writing reusable code frameworks
+Create career paths for your team members by strong mentoring and regular feedback/evaluation process.
+Set up best practices and identify areas for continuous improvement of the product development life cycle.
+Good experience in handling production and performance issues related to all genres of platforms and technologies
+Good Experience in hiring and growing a top notch engineering team
+
+
+Mandatory Qualification :
+
+Strong knowledge in any of the Frameworks like PHP Laravel or Golang GIN or Java
+Has object-oriented design and development experience; knowledge of data structures,
+algorithm design, problem solving, multi-threading, and complexity analysis.
+Strong knowledge in microservices architecture, monitoring & alerting.
+Strong Knowledge in RDBMS, SQL & No-SQL databases
+Hands on experience in Docker & Kubernetes
+Good understanding in Devops & hands on experience in Github Actions & CI/CD
+Strong Knowledge in HTML, CSS, Javascript, React JS
+
+
+
+
+
+
+
+
+
+
+Executive - Finance
+Bangalore
+The Role -
+
+We are seeking a highly motivated and self-driven finance professional with exceptional analytical skills and leadership experience in managing larger teams.The ideal candidate will excel in driving month-end closings, balance sheet consolidations, and implementing process automation.
+
+Roles and Responsibilities:
+
+Experience in managing and working with bigger team
+Excellent analytical skills, motivated, hardworking, and self-driven leader
+Ability to interact with stakeholders internal and external is essential
+Explore automation on all the areas worked.
+Understand the unit economics of the business and provide insights
+Month close reporting of Revenue, handling revenue assurance function.
+Review of monthly P&L – review decks, strong variance analysis capabilities
+Drive Monthly Balance Sheet closing and consolidation.
+Knowledge of direct and indirect taxation
+Proficiency and knowledge in Tier 1 ERP tools
+Assist with process implementations, preparation, and adherence to key control activities.
+Timely closure of audits relating to areas handled.
+To work closely with various stakeholders and business partners
+Assist in the delivery of high-quality
+Ability to work in high tech environment
+Independent decision making
+Very high standards of integrity and work ethics
+Mandatory Qualifications - 
+
+Bachelor’s   degree   in   commerce,  Finance,   or   related   fields;   additional qualifications   in   project   management   or   business   management   are advantageous
+2-5 years of working experience in the field of Accounts Receivable.
+Similar working experience in a Payment gateway/aggregator is a plus.
+
+
+
+
+
+
+
+
+
+
+Analyst, Business Operations
+Bangalore
+Roles and Responsibilities:
+
+The Business operations executive will be responsible for creating, editing, and maintaining configurations of internal and merchant facing systems.
+Compliance: Auditing merchant data and details from a compliance point of view.
+Risk: Careful planning, thorough analysis, and the implementation of appropriate risk management techniques to safeguard the organization's interests.
+Financial Operations & Analysis: Will be responsible for financial reconciliation, tracking settlements, assisting merchants with financial and transaction reports.
+Qualification:
+
+Bachelor's degree in Business Administration, Operations Management, or related field (or equivalent experience)
+Strong attention to detail and organizational skills
+Excellent communication and interpersonal skills
+Ability to work effectively in a team environment
+Proficiency in Microsoft Office suite including MS Excel, etc
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Lead DevOps Engineer
+Bangalore
+A Lead DevOps Engineer is liable for automating all the manual tasks for developing and deploying code and data to implement continuous deployment and continuous integration frameworks. They are also held responsible for maintaining high availability of production and non-production work environments.
+
+Roles and Responsibilities:
+
+Designing and implementing highly efficient solutions on Pubic Cloud (Amazon Web Services) for security, resilience, performance, networking, availability, and Blue-green deployments in the context of business applications.
+Security Hardening of cloud infrastructure application/web server against known/unknown vulnerabilities.
+Assess business needs and requirements to ensure the appropriate approach to solve client challenges
+Expert in Capacity Planning Design, cost and effort estimations
+Experience in Infra cost optimization
+Deliver best-in-class operations tooling & practices, including CI/ CD
+Writing infrastructure as code for public or private clouds and implementing modern cloud Integration architecture using –
+Configuration Management (Chef, Puppet, or Ansible )
+CI tools (Any)
+Scripting language: Python, Bash and Shell
+Container services like ECS, ACS, GCE or Kubernetes
+Architecting and implementing end-to-end monitoring solutions in the cloud
+Understand compliance and security
+Design for failover, high availability, MTTR, MTTF and MTB
+Must have an understanding of SDLC
+Report on business and process metrics
+Balance governance, ownership, and freedom against reliability
+Develop, motivate, empower, and evaluate individual contributors and grow their professional, leadership, and technical skills
+Should be well versed with IaaC specially Terraform
+Should be well versed with networking at AWS
+Should be able to manage infrastructure operations at the bank.
+Mandatory Qualifications:
+
+An Overall experience of 10+ years in Infrastructure
+5+ years of working in the Cloud (Public, & Private) with extensive knowledge of one or more Public Clouds (AWS preferred)
+Proven ability to plan and execute change on a large scale
+Can manage multiple projects simultaneously; able to evaluate progress or mitigate risks
+Knowledge of emerging technologies, various platforms, tools, and products, and their respective applications
+Have a few weekend side projects up on GitHub
+Have contributed to an open-source project
+Have worked at a product company
+Have a working knowledge of a backend programming language
+Location: Bangalore
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Software Development Engineer (MoneySaver)
+Bangalore
+The Role:
+
+A software development engineer at Razorpay is well-grounded - smart, quality focussed, a product thinker, and definitely an awesome coder with good technical context and experience to write quality software. Engineering creates a significant impact across different areas, considering the scale of our software product outreach. You’re also expected to influence the culture of the company and help shape it the right way.
+
+Roles and Responsibilities:
+
+Be involved and drive product & design discussions.
+Help us scale our payment infrastructure to get every Indian to pay online.
+Help us make decisions to shape our REST APIs for developers worldwide.
+Contribute to open source as we set the standards for mobile payments.
+Be involved and drive product & design discussions.
+And, most importantly, brainstorm and create new directions that Razorpay can take in our quest to make online payments easy and accessible to all.
+Mandatory Qualifications:
+
+1+ years of experience in Technology.
+A strong product design sense.
+Good experience in working with any of the programming languages like PHP, Python, Django, Golang, Java, C++
+Understand end-user requirements, formulate use cases and come up with effective solutions.
+Good understanding of REST APIs and the web in general.
+Ability to build a feature from scratch & drive it to completion.
+A willingness to learn new technology, whatever lets you deliver the best product.
+Have a few weekend side projects up on GitHub.
+Have contributed to an open-source project.
+Have worked at a product company.
+Have a working knowledge of a backend programming language
